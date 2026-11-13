@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pdview · live flows</title>
+<style>:root{color-scheme:dark}body{margin:0;background:#16181c;color:#d7dae0;font:14px/1.5 system-ui,sans-serif;padding:24px 16px}</style>
+</head><body><p id="m">Loading flows…</p>
+<script>
+fetch("flows.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(d=>{
+  const f=(d.flows||[])[0];
+  if(f)location.replace(encodeURIComponent(f.tag)+"/");else document.getElementById("m").textContent="No flows published yet.";
+}).catch(()=>{document.getElementById("m").textContent="No flows published yet.";});
+</script></body></html>
